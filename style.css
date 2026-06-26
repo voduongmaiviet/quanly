@@ -1,0 +1,219 @@
+/* --- Cấu hình chung --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-primary: #1e293b; /* Màu tối chủ đạo cho Sidebar */
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-color: #3b82f6; /* Màu xanh highlight nổi bật */
+    --bg-hover: #293548;
+    --sidebar-width: 290px;
+    --transition-speed: 0.35s;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #334155;
+    overflow-x: hidden;
+}
+
+/* --- Nút mở Sidebar (Hamburger) --- */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 1.25rem;
+    background: #ffffff;
+    color: var(--bg-primary);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* --- Cấu trúc Sidebar --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--sidebar-width)); /* Ẩn hoàn toàn sang bên trái */
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+    /* Hiệu ứng trượt mượt mà với cubic-bezier */
+    transition: left var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Trạng thái khi Sidebar được kích hoạt mở */
+.sidebar.active {
+    left: 0;
+}
+
+/* Tiêu đề thanh bên */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #293548;
+}
+
+.sidebar-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.sidebar-header .logo i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+/* Nút Đóng Sidebar */
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+/* --- Danh sách Menu tinh chỉnh --- */
+.sidebar-menu {
+    flex: 1;
+    padding: 15px 0;
+    overflow-y: auto; /* Tự động xuất hiện thanh cuộn nếu danh sách menu quá dài trên màn hình nhỏ */
+}
+
+.sidebar-menu ul {
+    list-style: none;
+}
+
+.sidebar-menu ul li {
+    margin: 4px 12px;
+}
+
+.sidebar-menu ul li a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    white-space: nowrap; /* Tránh chữ bị xuống dòng gây mất thẩm mỹ */
+    transition: all 0.25s ease;
+}
+
+/* Hiệu ứng hover và thẻ đang active */
+.sidebar-menu ul li a:hover,
+.sidebar-menu ul li.active a {
+    background-color: var(--bg-hover);
+    color: white;
+}
+
+.sidebar-menu ul li.active a {
+    background-color: var(--accent-color);
+}
+
+.sidebar-menu ul li a i {
+    font-size: 1.1rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* --- Lớp phủ mờ (Overlay) --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px); /* Làm mờ hậu cảnh phía sau rất đẹp mắt */
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Khu vực Nội dung chính --- */
+.main-content {
+    padding: 20px;
+    padding-left: 80px; /* Tạo khoảng cách an toàn tránh đè nút hamburger */
+    transition: padding var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-bar {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.top-bar h1 {
+    font-size: 1.4rem;
+    color: var(--bg-primary);
+}
+
+.content-body {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    min-height: 70vh;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* --- ĐIỀU CHỈNH RESPONSIVE (TƯƠNG THÍCH MỌI THIẾT BỊ) --- */
+
+/* Đối với màn hình lớn (Máy tính / Laptop) */
+@media (min-width: 1024px) {
+    .sidebar {
+        left: 0; /* Hiện cố định ở bên trái đối với màn hình PC rộng */
+    }
+    
+    .toggle-btn, .close-btn {
+        display: none; /* Ẩn các nút đóng mở không cần thiết trên PC */
+    }
+    
+    .main-content {
+        padding-left: calc(var(--sidebar-width) + 30px); /* Tự động đẩy vùng hiển thị chính sang phải */
+    }
+    
+    .overlay {
+        display: none; /* Không cần lớp phủ mờ trên PC */
+    }
+}

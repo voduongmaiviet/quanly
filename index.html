@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Võ Đường Mai Việt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button class="toggle-btn" id="openBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-user-ninja"></i>
+                <span>Danh Mục</span>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-menu">
+            <ul>
+                <li class="active">
+                    <a href="https://voduongmaiviet.github.io/" target="_blank">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Quản lý võ đường Mai Việt</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://voduongmaiviet.github.io/tintuc/" target="_blank">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Tin tức</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://voduongmaiviet.github.io/diemdanh/" target="_blank">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Điểm danh</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-address-book"></i>
+                        <span>Quản lý Danh bạ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://voduongmaiviet.github.io/chamdiem/" target="_blank">
+                        <i class="fas fa-star"></i>
+                        <span>Hệ thống chấm điểm đấu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user-ninja"></i>
+                        <span>Hệ thống chấm điểm quyền</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-medal"></i>
+                        <span>Hệ thống chấm điểm thi đai</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>Khác</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main class="main-content" id="mainContent">
+        <header class="top-bar">
+            <h1>Hệ Thống Quản Lý</h1>
+        </header>
+        <section class="content-body">
+            <p>Chào mừng bạn đến với hệ thống quản lý võ đường Mai Việt. Hãy nhấn vào nút menu ở góc trái để chọn Danh Mục.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
